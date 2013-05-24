@@ -34,6 +34,14 @@ gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
 
+# Rspec for testing
+gem 'rspec-rails', group: [:test, :development]
+
+group :test do
+	# integration testing
+	gem 'capybara'
+end
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
