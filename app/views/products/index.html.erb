@@ -1,7 +1,7 @@
 <% @products.each do |product| %>
 	<div class="span4">
 		<%= link_to product_path(product) do %>
-			<%= image_tag product.image(:medium) %>
+			<%= image_tag product.image(:medium), class: "img-polaroid" %>
 		<% end %>
 		<h2><%= link_to product.title, product_path(product) %></h2>
 

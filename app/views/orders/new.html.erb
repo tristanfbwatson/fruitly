@@ -1,16 +1,31 @@
 <div class="span12">
 
-	<ul>
-		<% basket.each do |item| %>
-			<li><%= item %>
+	<h3>My Order:</h3>
 
-				<%= link_to product_basket_path(item), method: :delete, class: "btn-small btn-danger" do %>
+	<table class="table table-bordered">
+		<tr>
+			<th></th>
+			<th>Product Name:</th>
+			<th>Price:</th>
+			<th>Remove from basket:</th>
+
+		<% basket.each do |item| %>
+			<tr>
+				<td><%= image_tag Product.find(item).image(:thumb) %></td>
+
+				<td><%= link_to Product.find(item).title, product_path(item)  %></td>
+
+				<td><%= Product.find(item).price_in_pence %>p</td>
+
+				<td><%= link_to product_basket_path(item), method: :delete, class: "btn-small btn-danger" do %>
 				<i class="icon icon-remove"></i>
 
-				<% end %> 
+				<% end %> </td>
 
-				</li>
-		<% end %>
+				</tr>
+			<% end %>
+	</table>
+		
 	</ul>
 
 </div>
