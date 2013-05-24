@@ -1,6 +1,33 @@
 <div class="span12">
 
-	<%= render "order" %>
+	<table class="table table-striped">
+		<tbody>
+		<% @order.order_products.each do |item| %>
+			<tr>
+				<td><%= item.title %></td>
+
+				<td><%= image_tag item.image(:thumb) %></td>
+
+				<td><%= quid item.price_in_pence %></td>
+
+				<td><%= link_to product_basket_path(item.product), method: :delete, class: "btn-small btn-danger" do %>Remove
+				<i class="icon icon-remove"></i></td>
+
+				<% end %> 
+
+				</tr>
+		<% end %>
+	</tbody>
+
+	<tfoot>
+		<tr>
+			<td colspan="2">Total price</td>
+			<td><%=  quid @order.total_price %></td>
+			<td></td>
+		</tr>
+	</tfoot>
+
+	</table>
 
 	<%= simple_form_for @order do |f| %>
 
