@@ -1,0 +1,16 @@
+<div class="span12">
+
+	<ul>
+		<% basket.each do |item| %>
+			<li><%= item %>
+
+				<%= link_to product_basket_path(item), method: :delete, class: "btn-small btn-danger" do %>
+				<i class="icon icon-remove"></i>
+
+				<% end %> 
+
+				</li>
+		<% end %>
+	</ul>
+
+</div>

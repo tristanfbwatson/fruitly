@@ -1,0 +1,12 @@
+<% @products.each do |product| %>
+	<div class="span4">
+		<%= link_to product_path(product) do %>
+			<%= image_tag product.image(:medium) %>
+		<% end %>
+		<h2><%= link_to product.title, product_path(product) %></h2>
+
+		<p><%= product.price_in_pence %></p>
+
+	</div>
+
+<% end %>
