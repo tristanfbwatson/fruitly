@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
   		basket.clear
   		flash[:success] = "Thank you for your order!"
       OrderMailer.admin(@order).deliver
-      OrderMail.customer(@order).deliver
+      OrderMailer.customer(@order).deliver
 
   	else
   		render "new"
