@@ -9,5 +9,34 @@ class Order < ActiveRecord::Base
   validates :address_1, presence: true
   validates :postcode, presence: true
 
+  def total_price
+
+  	total = 0
+
+  	order_products.each do |p|
+  		total += p.price_in_pence
+    end
+
+  return total
+
+  end
+
+  def save_with_stripe
+
+  if valid?
+
+    @charge = Stripe::Charge.create(
+      amount: total_price,
+      currency: "gbp",
+      card: stripe_card_token,
+      description: email
+      )
+
+    save!
+  end
+rescue
+  errors.add :base, "There was a problem with Stripe"
+  end
+
 
 end

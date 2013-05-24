@@ -9,10 +9,10 @@
 
 <div class="price">
 	<% if @product.previous_price_in_pence %>
-		Was <%= @product.previous_price_in_pence %>
+		<del><%= quid @product.previous_price_in_pence %></del>
 	<% end %>
 
-	<%= @product.price_in_pence %>
+	<%= quid @product.price_in_pence %>
 
 </div>
 

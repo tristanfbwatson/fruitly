@@ -1,16 +1,40 @@
 <div class="span12">
 
-	<ul>
-		<% basket.each do |item| %>
-			<li><%= item %>
+	<%= render "order" %>
 
-				<%= link_to product_basket_path(item), method: :delete, class: "btn-small btn-danger" do %>
-				<i class="icon icon-remove"></i>
+	<%= simple_form_for @order do |f| %>
 
-				<% end %> 
+		<%= f.input :name %>
+		<%= f.input :email %>
+		<%= f.input :address_1 %>
+		<%= f.input :address_2 %>
+		<%= f.input :city %>
+		<%= f.input :postcode %>
 
-				</li>
-		<% end %>
-	</ul>
+		<%= f.input :stripe_card_token, as: :hidden %>
+
+		<div class="field">
+			<label>Credit card number</label>
+			<%= text_field_tag :card_number %>
+		</div>
+
+		<div class="field">
+			<label>Security code</label>
+			<%= text_field_tag :card_code %>
+		</div>
+
+		<div class="field">
+			<label>Expiration date</label>
+			<%= select_month nil, { add_month_number:true }, { name: nil, id: "card_month"} %>
+			<%= select_year nil, { start_year: Date.today.year, end_year: Date.today.year + 15 }, { name: nil, id: "card_year"} %>
+		</div>
+
+	<%= f.button :submit, "Place order", class: "btn btn-success" %>
+
+	<% end %>
+
+
+
+	
 
 </div>

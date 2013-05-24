@@ -3,5 +3,7 @@ class OrderProduct < ActiveRecord::Base
 
   belongs_to :order
   belongs_to :product
+
+  delegate :title, :description, :image, to: :product
   
 end
