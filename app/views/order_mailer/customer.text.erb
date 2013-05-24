@@ -1,0 +1,18 @@
+Hey <%= @order.name %>
+
+We love you and here's your receipt
+
+Address:
+<%= @order.address_1 %>
+<%= @order.address_2 %>
+<%= @order.city %>
+<%= @order.postcode %>
+
+Total Price:
+<%= quid @order.total_price %>
+
+<% @order.order_products.each do |item| %>
+<%= item.title %>
+<% end %>
+
+Love from Fruitly xxx
